@@ -41,6 +41,10 @@ class DepartmentTest < Minitest::Test
     refute_equal ashley.name, "sullymaster@yahoo.com"
   end
 
+  def test_get_employees_salary
+    andrew = Employee.new("andrew", "pyton_user@yahoo.com", "(919)987-6543", "20")
+    assert_equal andrew.salary, "20"
+    refute_equal andrew.salary, "(919)987-6543"
+  end
   
-
 end
