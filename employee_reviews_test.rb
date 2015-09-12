@@ -43,8 +43,8 @@ class DepartmentTest < Minitest::Test
 
   def test_get_employees_salary
     andrew = Employee.new("andrew", "pyton_user@yahoo.com", "(919)987-6543", 500000)
-    assert_equal andrew.salary, 500000
-    refute_equal andrew.salary, "(919)987-6543"
+    assert_equal 500000, andrew.salary
+    refute_equal "(919)987-6543", andrew.salary
   end
 
   def test_get_department_name
@@ -86,7 +86,21 @@ class DepartmentTest < Minitest::Test
 
   def test_employee_raise
     ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 1000000)
-    assert_equal ashley.new_salary, 1500000
+    assert_equal 1500000, ashley.new_salary
+  end
+
+  def test_dep_raise
+    andrew = Employee.new("andrew", "pyton_user@yahoo.com", "(919)987-6543", 500000)
+    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 1000000)
+    janice = Employee.new("Janice", "some.email@yahoo.com", "(919)000-0000", 500000)
+    department = Department.new("shipping", [andrew, ashley, janice])
+    ashley.satisfactory = true
+    andrew.satisfactory = true
+    janice.satisfactory = false
+    department.dep_raise(1000000)
+    assert_equal 1000000, andrew.salary
+    assert_equal 1500000, ashley.salary
+    assert_equal 500000, janice.salary
   end
 
 

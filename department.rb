@@ -15,4 +15,22 @@ class Department
     end
     return salaries
   end
+
+  def dep_raise(amount)
+    satisfactory_count = 0
+    employees.each do |employee|
+      if employee.satisfactory? == true
+        satisfactory_count += 1
+      end
+    end
+    individual_raise = amount / satisfactory_count
+
+    employees.each do |employee|
+      if employee.satisfactory == true
+        employee.salary += individual_raise
+      end
+    end
+  end
+
+
 end
