@@ -64,14 +64,13 @@ class DepartmentTest < Minitest::Test
     andrew = Employee.new("andrew", "pyton_user@yahoo.com", "(919)987-6543", 500000)
     ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 1000000)
     janice = Employee.new("Janice", "some.email@yahoo.com", "(919)000-0000", 500000)
-    ashley.review = "Ashley does a very good job packaging. She is a fantastic employee.
-      She is always on time to work, and she never complains. "
-    andrew.review = "Andrew is not very good at packaging, but I can tell that he is working to
-      improve. Even thought the job is a struggle for him at times, he always comes to work with a smile.
-      if given time to improve, I believe he could be very good."
-    janice.review = "Janice is awful at packaging. She has been with the company for 8 months, and she
-      still needs constant reminders about labeling practices. Very rarely is she on time to work, and
-      she does not seem interested in trying to get better."
+    ashley.review = "Ashley does a very good job packaging. She is a fantastic employee. She is always on time to work, and she never complains. "
+    andrew.review = "Andrew is not very good at packaging, but I can tell that he is working to improve. Even thought the job is a struggle for him at times, he always comes to work with a smile. if given time to improve, I believe he could be very good."
+    janice.review = "Janice is awful at packaging. She has been with the company for 8 months, and she still needs constant reminders about labeling practices. Very rarely is she on time to work, and she does not seem interested in trying to get better."
+    assert_equal ashley.review, "Ashley does a very good job packaging. She is a fantastic employee. She is always on time to work, and she never complains. "
+    assert_equal andrew.review, "Andrew is not very good at packaging, but I can tell that he is working to improve. Even thought the job is a struggle for him at times, he always comes to work with a smile. if given time to improve, I believe he could be very good."
+    assert_equal janice.review, "Janice is awful at packaging. She has been with the company for 8 months, and she still needs constant reminders about labeling practices. Very rarely is she on time to work, and she does not seem interested in trying to get better."
+  end
 
 
 
