@@ -1,2 +1,0 @@
-require './department'
-require './employee'
