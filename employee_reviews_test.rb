@@ -72,6 +72,17 @@ class DepartmentTest < Minitest::Test
     assert_equal janice.review, "Janice is awful at packaging. She has been with the company for 8 months, and she still needs constant reminders about labeling practices. Very rarely is she on time to work, and she does not seem interested in trying to get better."
   end
 
+  def test_satisfactory
+    andrew = Employee.new("andrew", "pyton_user@yahoo.com", "(919)987-6543", 500000)
+    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 1000000)
+    janice = Employee.new("Janice", "some.email@yahoo.com", "(919)000-0000", 500000)
+    ashley.satisfactory = true
+    andrew.satisfactory = true
+    janice.satisfactory = false
+    assert ashley.satisfactory?
+    assert andrew.satisfactory?
+    refute janice.satisfactory?
+  end
 
 
 end

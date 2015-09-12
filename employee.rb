@@ -1,6 +1,6 @@
 class Employee
   attr_reader :name, :email, :phone, :salary
-  attr_accessor :review
+  attr_accessor :review, :satisfactory
 
   def initialize(name, email, phone, salary)
     @name = name
@@ -8,7 +8,11 @@ class Employee
     @phone = phone
     @salary = salary
     @review = nil
+    @satisfactory = nil
   end
- def satisfactory?
- end
+
+  def satisfactory?
+    return @satisfactory
+  end
+
 end
