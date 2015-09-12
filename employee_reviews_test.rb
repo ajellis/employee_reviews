@@ -46,5 +46,11 @@ class DepartmentTest < Minitest::Test
     assert_equal andrew.salary, "20"
     refute_equal andrew.salary, "(919)987-6543"
   end
-  
+
+  def test_get_department_name
+    department = Department.new("shipping", ["Ashley"])
+    assert_equal department.dep_name, "shipping"
+    refute_equal department.dep_name, "Ashley"
+  end
+
 end
