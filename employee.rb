@@ -15,4 +15,7 @@ class Employee
     return @satisfactory
   end
 
+  def new_salary
+    new_salary = salary*1.50
+  end
 end

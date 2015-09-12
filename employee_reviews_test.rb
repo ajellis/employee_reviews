@@ -84,5 +84,10 @@ class DepartmentTest < Minitest::Test
     refute janice.satisfactory?
   end
 
+  def test_employee_raise
+    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 1000000)
+    assert_equal ashley.new_salary, 1500000
+  end
+
 
 end
