@@ -34,4 +34,13 @@ class DepartmentTest < Minitest::Test
     department = Department.new("shipping", [ashley])
     assert department.employees.include? ashley
   end
+
+  def test_get_employees_name
+    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", "1,000,000")
+    assert_equal ashley.name, "Ashley"
+    refute_equal ashley.name, "sullymaster@yahoo.com"
+  end
+
+  
+
 end

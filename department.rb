@@ -1,3 +1,4 @@
+require './employee'
 class Department
   attr_reader :employees
 
