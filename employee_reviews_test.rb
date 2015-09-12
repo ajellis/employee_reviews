@@ -28,4 +28,10 @@ class DepartmentTest < Minitest::Test
       Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567")
     end
   end
+
+  def test_add_employees
+    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", "1,000,000")
+    department = Department.new("shipping", [ashley])
+    assert department.employees.include? ashley
+  end
 end
