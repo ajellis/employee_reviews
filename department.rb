@@ -17,18 +17,13 @@ class Department
   end
 
   def dep_raise(amount)
-    satisfactory_count = 0
-    employees.each do |employee|
-      if employee.satisfactory? == true
-        satisfactory_count += 1
-      end
+    employees_for_raise = employees.select do |employee|
+      yield(employee)
     end
-    individual_raise = amount / satisfactory_count
+    individual_raise = amount / employees_for_raise.count
 
-    employees.each do |employee|
-      if employee.satisfactory == true
-        employee.salary += individual_raise
-      end
+    employees_for_raise.each do |employee|
+    employee.salary += individual_raise
     end
   end
 

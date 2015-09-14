@@ -90,19 +90,22 @@ class DepartmentTest < Minitest::Test
     assert_equal 1500000, ashley.new_salary
   end
 
-  def test_dep_raise
-    andrew = Employee.new("Andrew", "pyton_user@yahoo.com", "(919)987-6543", 500000)
-    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 1000000)
-    janice = Employee.new("Janice", "some.email@yahoo.com", "(919)000-0000", 500000)
+
+  def test_pass_block_dep_raise
+    andrew = Employee.new("Andrew", "pyton_user@yahoo.com", "(919)987-6543", 50000)
+    ashley = Employee.new("Ashley", "sully_master@yahoo.com", "(919)123-4567", 120000)
+    janice = Employee.new("Janice", "some.email@yahoo.com", "(919)000-0000", 75000)
+    ryan = Employee.new("Ryan", "some_other.email@yahoo.com", "(919)111-1111", 100000)
     department = Department.new("shipping", [andrew, ashley, janice])
-    ashley.satisfactory = true
-    andrew.satisfactory = true
-    janice.satisfactory = false
-    department.dep_raise(1000000)
-    assert_equal 1000000, andrew.salary
-    assert_equal 1500000, ashley.salary
-    assert_equal 500000, janice.salary
+    department.dep_raise(5000) do |employee|
+      employee.salary < 100000
+    end
+    assert_equal 120000, ashley.salary
+    assert_equal 100000, ryan.salary
+    assert_equal 77500, janice.salary
+    assert_equal 52500, andrew.salary
   end
+
 
 
 end
