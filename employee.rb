@@ -1,3 +1,5 @@
+
+
 class Employee
   attr_reader :name, :email, :phone
   attr_accessor :review, :satisfactory, :salary
@@ -12,6 +14,14 @@ class Employee
   end
 
   def satisfactory?
+    positive_review = review.scan(/positive | good | effective | consistent | satisfied | asset | pleasure/)
+    negative_review = review.scan(/concern | concerns | trouble | tendency | negative | difficult |inadequate/)
+    if positive_review.count > negative_review.count
+      @satisfactory = true
+    elsif
+      negative_review.count > positive_review.count
+      @satisfactory = false
+    end
     return @satisfactory
   end
 
